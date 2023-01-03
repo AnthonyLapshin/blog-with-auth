@@ -1,1 +1,28 @@
 <h1>Welcome!</h1>
+<%= link_to "Login", new_login_path %>
+<hr>
+<% @users.each do |user|%>
+    <% user.posts.each do |post|%>
+        <table>
+            <tr>
+                <td><b>User:</b></td>
+                <td><%= user.email %></td>
+            </tr>
+            <tr>
+                <td><b>Title</b></td>
+                <td><%= post.title %></td>
+            </tr>
+            <tr>
+                <td><b>Post</b></td>
+                <td><%= post.body %></td>
+            </tr>
+            <% next unless @user %>
+            
+            <% if user.id == @user.id %>
+                <tr>
+                    <td><%=link_to "edit", edit_post_path(post)%></td>
+                </tr>
+            <%end%>
+        <table>
+    <%end%>
+<%end%>
