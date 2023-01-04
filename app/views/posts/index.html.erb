@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+<h1>Posts</h1>
+<%= render "posts/login", user: @user %>
+<hr/>
+<br/>
+<div id="posts">
+  <% if @user %>
+  <%= link_to "New post", new_post_path %> <br/><br/>
+  <%end%>
+  <% @users.each do |user|%>
+      <% user.posts.each do |post|%>
+        <%= render post, post: post %>
+        <br/>
+      <% end %>  
+  <% end %>
+</div>
+
+
+
+
+

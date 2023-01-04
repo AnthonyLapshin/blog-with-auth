@@ -1,0 +1,5 @@
+<%unless user%>
+  <%= link_to "Login", new_login_path %> | <%= link_to "Sign up", new_registration_path %>
+<%else%>
+  Logged as : <b><%=user.email%></b> <%= link_to "logout", :controller=> "logins", :action=> "logout" %>
+<%end%>
