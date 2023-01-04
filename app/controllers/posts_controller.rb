@@ -69,7 +69,11 @@ class PostsController < ApplicationController
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      begin
+        @post = Post.find(params[:id])
+      rescue
+        redirect_back_or_to '/'
+      end
     end
 
     # Only allow a list of trusted parameters through.
